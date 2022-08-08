@@ -1,5 +1,5 @@
 
-def Permutation(n):
+def PERM(n):
     import itertools
     list1 = []
     for i in range(n):
@@ -12,4 +12,4 @@ def Permutation(n):
 if __name__ == "__main__":
     with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_perm.txt", "r") as f:
         n = int(f.readline().strip())
-    Permutation(n)
+    PERM(n)

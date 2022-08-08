@@ -11,7 +11,6 @@ def gc(strings):
     return highest_gc
 
 if __name__ == "__main__":
-    # load data
     seq_name, seq_string = [], []
     with open ("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_gc.txt",'r') as fa:
         for seq_record  in SeqIO.parse(fa,'fasta'):

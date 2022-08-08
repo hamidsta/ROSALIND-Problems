@@ -11,7 +11,7 @@ def shortest_seq(seq):
     return shortest_seq
 
 
-def shared_motif(seq):
+def find_shared_motif(seq):
     s_seq = shortest_seq(seq)
     motif = set()
     for i in range(len(s_seq)):
@@ -39,6 +39,6 @@ if __name__ == "__main__":
             seq_name.append(str(seq_record.name))
             seq_string.append(str(seq_record.seq))
     seq = {seq_name[i]: seq_string[i] for i in range(len(seq_name))}
-    print(shared_motif(seq))
+    print(find_shared_motif(seq))
 
 

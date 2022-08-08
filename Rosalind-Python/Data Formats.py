@@ -1,7 +1,7 @@
 
 from Bio import Entrez, SeqIO
 
-def shortest_entry(entry_ids):
+def short_entry(entry_ids):
     Entrez.email = "***@*****"
     handle = Entrez.efetch(db="nucleotide", id=[", ".join(entry_ids)], rettype="fasta")
     records = list(SeqIO.parse(handle, "fasta"))
@@ -10,4 +10,4 @@ def shortest_entry(entry_ids):
 if __name__ == "__main__":
     with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_frmt.txt", "r") as f:
         entry_ids = f.readline().strip().split()
-    shortest_entry(entry_ids)
+    short_entry(entry_ids)

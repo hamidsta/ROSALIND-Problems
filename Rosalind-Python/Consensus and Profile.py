@@ -3,7 +3,6 @@ import numpy as np
 
 np.set_printoptions(threshold=np.inf)
 
-# load data
 seq_name, seq_string = [], []
 with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_cons.txt", 'r') as fa:
     for seq_record in SeqIO.parse(fa, 'fasta'):

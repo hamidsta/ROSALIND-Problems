@@ -1,14 +1,9 @@
-# the input:
-# ==============================
+
 data = "C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_tree.txt"
 
-# the solution:
-# ==============================
 with open(data, "r") as f:
     n = int(f.readline())
     adjacency_list = [line.strip().split(" ") for line in f]
-# print(n)
-# print(adjacency_list)
 
 subtrees = []
 nodes = set()
@@ -32,8 +27,6 @@ for i in range(l):
             subtrees[i] = list(set(subtrees[i] + subtrees[j]))
             subtrees[j] = []
 subtrees = [i for i in subtrees if i]
-# print(subtrees)
-# print(nodes)
 
 result = (n -len(nodes)) + len(subtrees) - 1
 print(result)
