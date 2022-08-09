@@ -1,4 +1,4 @@
-rna_to_aminoacid_dictionary = {'UUU': 'F', "UUC": 'F', 'UUA': 'L', 'UUG': 'L', 'UCU': 'S', 'UCA': 'S', 'UCC': 'S',
+dic = {'UUU': 'F', "UUC": 'F', 'UUA': 'L', 'UUG': 'L', 'UCU': 'S', 'UCA': 'S', 'UCC': 'S',
                                'UCG': 'S', 'UAU': 'Y', 'UAC': 'Y', 'UAA': 'STOP', 'UAG': 'STOP', 'UGU': 'C', 'UGC': 'C',
                                'UGA': 'STOP', 'UGG': 'W', 'CUU': 'L', 'CUC': 'L', 'CUA': 'L', 'CUG': 'L', 'CCU': 'P',
                                'CCC': 'P', 'CCA': 'P', 'CCG': 'P', 'CAU': 'H', 'CAC': 'H', 'CAA': 'Q', 'CAG': 'Q',
@@ -12,7 +12,7 @@ rna_to_aminoacid_dictionary = {'UUU': 'F', "UUC": 'F', 'UUA': 'L', 'UUG': 'L', '
 file = open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_splc.txt", "r")
 
 
-def extract_sequence_from_input(file):
+def ex(file):
     sequences = []
     result = ""
 
@@ -36,7 +36,7 @@ t
     sequences.remove('')
     return sequences
 
-sequences = extract_sequence_from_input(file)
+sequences = ex(file)
 dna_string = sequences[0]
 introns = sequences[1:]
 introns.sort(reverse=True)
