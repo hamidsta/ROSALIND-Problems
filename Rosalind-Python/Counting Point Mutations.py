@@ -7,7 +7,6 @@ def hamm(string1, string2):
             distance += 1
     return distance
 
-if __name__ == "__main__":
     with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_hamm.txt", "r") as f:
         string1 = f.readline().strip()
         string2 = f.readline().strip()

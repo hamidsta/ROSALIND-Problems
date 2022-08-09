@@ -1,21 +1,21 @@
 
 from Bio import SeqIO
 
-def catalan_numbers(s, nodes, catalan_memo):
-    n = int(nodes/2)
-    if n <= 1:
+def catalan_numbers(s, nœuds, memo):
+    x = int(nœuds/2)
+    if x <= 1:
         return 1
-    if catalan_memo.get((s, nodes),0):
-        return catalan_memo[(s, nodes)]
+    if memo.get((s, nœuds),0):
+        return memo[(s, nœuds)]
     Cn = 0
-    for k in range(1, 2*n, 2):
+    for k in range(1, 2*x, 2):
         a, u, c, g = s[1:k].count("A"), s[1:k].count("U"), s[1:k].count("C"), s[1:k].count("G")
         if a==u and c==g and (s[0], s[k]) in [("A", "U"), ("U", "A"), ("C", "G"), ("G", "C")]:
-            Cn += catalan_numbers(s[1:k], k-1, catalan_memo) * catalan_numbers(s[k+1:], 2*n-k-1, catalan_memo)
-    catalan_memo[(s, nodes)] = Cn
+            Cn += catalan_numbers(s[1:k], k-1, memo) * catalan_numbers(s[k+1:], 2*x-k-1, memo)
+    memo[(s, nœuds)] = Cn
     return Cn
 
-if __name__ == "__main__":
+
     seq_name, seq_string = [], []
     with open ("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_cat.txt",'r') as fa:
         for seq_record in SeqIO.parse(fa,'fasta'):

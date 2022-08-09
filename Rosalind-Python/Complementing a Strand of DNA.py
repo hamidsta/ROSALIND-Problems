@@ -1,6 +1,6 @@
-def DNAstrand(string):
+def DNAstrand(x):
     strand = ""
-    for i in string[::-1]:
+    for i in x[::-1]:
         if i == "A":
             strand += "T"
         if i == "T":

@@ -5,9 +5,6 @@ with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_rstr.txt", "r"
     x = float(x)
     s = f.readline().strip()
 
-# N = 97698
-# x = 0.462550
-# s = 'AGATGGCCA'
 at = s.count('A') + s.count('T')
 gc = s.count('G') + s.count('C')
 P_s = pow(x/2, gc) * pow((1-x)/2, at)

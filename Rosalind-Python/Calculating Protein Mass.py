@@ -1,6 +1,6 @@
 
 # PM AA
-aa_mass = {
+mass_prot= {
         "A":71.03711, "C":103.00919, "D":115.02694, "E":129.04259, "F":147.06841,
         "G":57.02146, "H":137.05891, "I":113.08406, "K":128.09496, "L":113.08406,
         "M":131.04049, "N":114.04293, "P":97.05276, "Q":128.05858, "R":156.10111,
@@ -8,5 +8,5 @@ aa_mass = {
 
 with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_prtm.txt", "r") as f:
     p = f.readline().strip()
-    weight = sum([aa_mass[i] for i in p])
-    print(weight)
+    mass = sum([mass_prot[i] for i in p])
+    print(mass)

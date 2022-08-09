@@ -1,55 +1,54 @@
 from Bio import SeqIO
 
 
-def _get_overlap_strings(s1, s2):
-    combine_strings = []
-    overlap_strings = []
-    for i in range(len(s1)):
-        if s1[i:] == s2[:len(s1) - i]:
-            overlap_strings.append(s1[i:])
-            combine_strings.append(s1 + s2[len(s1) - i:])
+def stings_overlap(x, y):
+    merge_x = []
+    overlaping = []
+    for i in range(len(x)):
+        if x[i:] == y[:len(x) - i]:
+            overlaping.append(x[i:])
+            merge_x.append(x + y[len(x) - i:])
             break
-    for i in range(len(s2)):
-        if s2[i:] == s1[:len(s2) - i]:
-            overlap_strings.append(s2[i:])
-            combine_strings.append(s2 + s1[len(s2) - i:])
+    for i in range(len(y)):
+        if y[i:] == x[:len(y) - i]:
+            overlaping.append(y[i:])
+            merge_x.append(y + x[len(y) - i:])
             break
-    if not overlap_strings:
+    if not overlaping:
         return "", ""
 
-    combine_string = min(combine_strings, key=len)
-    overlap_string = max(overlap_strings, key=len)
-    return combine_string, overlap_string
+    x_combined = min(merge_x, key=len)
+    x_overlaped = max(overlaping, key=len)
+    return x_combined, x_overlaped
 
 
-def find_superstring(strings):
-    temp = strings
+def shortest_superstring(x):
+    temporary = x
 
-    while len(temp) > 1:
-        most_overlapping_string = ""
-        most_overlapping_string_pair = []
-        most_overlapping_string_length = 0
+    while len(temporary) > 1:
+        overlaping_string = ""
+        overlaping_string_pair = []
+        overlaping_string_length = 0
 
-        for i in range(len(temp) - 1):
-            for j in range(i + 1, len(temp)):
-                combine_string, overlap_string = _get_overlap_strings(temp[i], temp[j])
-                if len(overlap_string) > most_overlapping_string_length:
-                    most_overlapping_string = combine_string
-                    most_overlapping_string_pair = [temp[i], temp[j]]
-                    most_overlapping_string_length = len(overlap_string)
+        for i in range(len(temporary) - 1):
+            for j in range(i + 1, len(temporary)):
+                x_combined, x_overlaped = stings_overlap(temporary[i], temporary[j])
+                if len(x_overlaped) > overlaping_string_length:
+                    overlaping_string = x_combined
+                    overlaping_string_pair = [temporary[i], temporary[j]]
+                    overlaping_string_length = len(x_overlaped)
 
-        temp.remove(most_overlapping_string_pair[0])
-        temp.remove(most_overlapping_string_pair[1])
-        temp.append(most_overlapping_string)
+        temporary.remove(overlaping_string_pair[0])
+        temporary.remove(overlaping_string_pair[1])
+        temporary.append(overlaping_string)
 
-    return temp
+    return temporary
 
 
-if __name__ == "__main__":
-    seq_name, seq_string = [], []
+    name, string = [], []
     with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_long.txt", 'r') as fa:
-        for seq_record in SeqIO.parse(fa, 'fasta'):
-            seq_name.append(str(seq_record.name))
-            seq_string.append(str(seq_record.seq))
-    shortest_superstring = find_superstring(seq_string)
+        for i in SeqIO.parse(fa, 'fasta'):
+            name.append(str(i.name))
+            string.append(str(i.seq))
+    shortest_superstring = shortest_superstring(string)
     print(shortest_superstring)

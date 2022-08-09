@@ -1,44 +1,42 @@
 from Bio import SeqIO
 
 
-def shortest_seq(seq):
+def short(x):
     min_len = 10000
-    shortest_seq = ''
-    for i in seq.keys():
-        if len(seq[i]) < min_len:
-            min_len = len(seq[i])
-            shortest_seq = seq[i]
-    return shortest_seq
+    short = ''
+    for i in x.keys():
+        if len(x[i]) < min_len:
+            min_len = len(x[i])
+            short = x[i]
+    return short
 
 
-def find_shared_motif(seq):
-    s_seq = shortest_seq(seq)
+def shared_motif(seq):
+    seq = short(seq)
     motif = set()
-    for i in range(len(s_seq)):
-        for j in range(i + 1, len(s_seq) + 1):
-            motif.add(s_seq[i:j])
-    for s in seq.values():
+    for i in range(len(seq)):
+        for j in range(i + 1, len(seq) + 1):
+            motif.add(seq[i:j])
+    for x in seq.values():
         update_motif = list(motif)
-        for m in update_motif:
-            if m not in s:
-                motif.remove(m)
+        for w in update_motif:
+            if w not in x:
+                motif.remove(w)
     n = 0
-    longest_motif = ''
+    motif_long = ''
     for i in motif:
         if len(i) > n:
-            longest_motif = i
+            motif_long = i
             n = len(i)
-    return longest_motif
+    return motif_long
 
 
-if __name__ == "__main__":
-    # load data
     seq_name, seq_string = [], []
     with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_lcsm.txt", 'r') as fa:
         for seq_record in SeqIO.parse(fa, 'fasta'):
             seq_name.append(str(seq_record.name))
             seq_string.append(str(seq_record.seq))
     seq = {seq_name[i]: seq_string[i] for i in range(len(seq_name))}
-    print(find_shared_motif(seq))
+    print(shared_motif(seq))
 
 

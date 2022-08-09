@@ -1,15 +1,14 @@
 
-def PERM(n):
+def gene_orders(n):
     import itertools
-    list1 = []
+    x = []
     for i in range(n):
-        list1.append(i + 1)
-    list2 = list(itertools.permutations(list1, n))
-    print(len(list2))
-    for l in list2:
+        x.append(i + 1)
+    y = list(itertools.gene_ordersutations(x, n))
+    print(len(y))
+    for l in y:
         print(" ".join([str(i) for i in l]))
 
-if __name__ == "__main__":
-    with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_perm.txt", "r") as f:
+    with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_gene_orders.txt", "r") as f:
         n = int(f.readline().strip())
-    PERM(n)
+    gene_orders(n)

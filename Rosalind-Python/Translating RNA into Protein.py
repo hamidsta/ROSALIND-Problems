@@ -20,7 +20,6 @@ def prot(string):
     return rst[:rst.index("*")]
 
 
-if __name__ == "__main__":
     with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_prot.txt", 'r') as f:
         string = f.readline().strip()
     print(prot(string))

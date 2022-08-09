@@ -1,5 +1,5 @@
-def off_spring(l):
-    offspring = (1*l[0] + 1*l[1] + 1*l[2] + 0.75*l[3] + 0.5*l[4] + 0*l[5]) * 2
+def off_spring(x):
+    offspring = (1*x[0] + 1*x[1] + 1*x[2] + 0.75*x[3] + 0.5*x[4] + 0*x[5]) * 2
     return offspring
 
 if __name__ == "__main__":

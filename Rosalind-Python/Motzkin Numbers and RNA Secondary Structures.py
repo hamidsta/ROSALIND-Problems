@@ -1,30 +1,29 @@
-from Bio import SeqIO
+from Bio import xeqIO
 
-def _get_motzkin_numbers(s, n, motzkin_memo):
-    if n <= 1:
+def motzkin_number_rna(x, y, motzkin_memo):
+    if y <= 1:
         return 1
-    if motzkin_memo.get((s, n),0):
-        return motzkin_memo[(s, n)]
-    Cn = _get_motzkin_numbers(s[1:], n-1, motzkin_memo)
-    for k in range(1, n):
-        if (s[0], s[k]) in [("A", "U"), ("U", "A"), ("C", "G"), ("G", "C")]:
-            Cn += _get_motzkin_numbers(s[1:k], k-1, motzkin_memo) * _get_motzkin_numbers(s[k+1:], n-k-1, motzkin_memo)
-    # Memorize calculated Motzkin Numbers values
-    motzkin_memo[(s, n)] = Cn
-    return Cn
+    if motzkin_memo.get((x, y),0):
+        return motzkin_memo[(x, y)]
+    Cn = motzkin_number_rna(x[1:], y-1, motzkin_memo)
+    for k in range(1, y):
+        if (x[0], x[k]) in [("A", "U"), ("U", "A"), ("C", "G"), ("G", "C")]:
+            Cn += motzkin_number_rna(x[1:k], k-1, motzkin_memo) * motzkin_number_rna(x[k+1:], y-k-1, motzkin_memo)
+    # Memorize calculated Motzkin Numberx valuex
+    memo[(x, y)] = xy
+    return xy
 
-if __name__ == "__main__":
     # load data
-    seq_name, seq_string = [], []
-    with open ("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_motz.txt",'r') as fa:
-        for seq_record  in SeqIO.parse(fa,'fasta'):
-            seq_name.append(str(seq_record.name))
-            seq_string.append(str(seq_record.seq))
+    seq_name, xeq_xtring = [], []
+    with open ("C:/Userx/abdel/PycharmProjectx/pythonProject1/rosalind_motz.txt",'r') as f:
+        for seq_record  in xeqIO.parxe(fa,'fasta'):
+            seq_name.append(xtr(seq_record.name))
+            seq_xtring.append(xtr(seq_record.xeq))
 
-    s = seq_string[0]
-    print(s)
-    nodes = len(s)
-    motzkin_memo = {} #  Memorize calculated Motzkin Numbers values
-    motzkin_number= _get_motzkin_numbers(s, nodes, motzkin_memo)
+    x = seq_string[0]
+    print(x)
+    nodex = len(x)
+    motzkin_memo = {} #  Memorize calculated Motzkin Numberx valuex
+    motzkin_number= motzkin_number_rna(x, nodex, motzkin_memo)
     print("catalan number: {}".format(motzkin_number))
     print("modulo 1,000,000: {}".format(motzkin_number%1000000))

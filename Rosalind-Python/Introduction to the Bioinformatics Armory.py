@@ -1,12 +1,11 @@
 
-def ini(dna):
-    symbols = ["A", "C", "G", "T"]
-    symbols_count = {i:dna.count(i) for i in symbols}
-    return symbols_count
+def bioinformatics(y):
+    x = ["A", "C", "G", "T"]
+    counts = {i:y.count(i) for i in x}
+    return counts
 
-if __name__ == "__main__":
-    with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_ini.txt", "r") as f:
-        dna = f.readline().strip()
-    symbols_count = ini(dna)
-    for k,v in symbols_count.items():
+    with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_bioinformatics.txt", "r") as f:
+        y = f.readline().strip()
+    counts = bioinformatics(y)
+    for x,y in counts.items():
         print(v, end=" ")

@@ -1,32 +1,32 @@
 
-data = "C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_tree.txt"
+dat = "C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_tree.txt"
 
-with open(data, "r") as f:
+with open(dat, "r") as f:
     n = int(f.readline())
-    adjacency_list = [line.strip().split(" ") for line in f]
+    list = [line.strip().split(" ") for line in f]
 
-subtrees = []
+x = []
 nodes = set()
-for i, j in adjacency_list:
+for i, j in list:
     if i in nodes or j in nodes:
-        for st in subtrees:
+        for st in x:
             if i in st or j in st:
-                subtrees[subtrees.index(st)].append(i)
-                subtrees[subtrees.index(st)].append(j)
+                x[x.index(st)].append(i)
+                x[x.index(st)].append(j)
                 nodes.add(i), nodes.add(j)
     else:
-        subtrees.append([i,j])
+        x.append([i,j])
         nodes.add(i), nodes.add(j)
 
-l = len(subtrees)
+l = len(x)
 for i in range(l):
     for j in range(l):
         if i==j:
            break
-        if len(set(subtrees[i] + subtrees[j])) < len(subtrees[i]) + len(subtrees[j]):
-            subtrees[i] = list(set(subtrees[i] + subtrees[j]))
-            subtrees[j] = []
-subtrees = [i for i in subtrees if i]
+        if len(set(x[i] + x[j])) < len(x[i]) + len(x[j]):
+            x[i] = list(set(x[i] + x[j]))
+            x[j] = []
+x = [i for i in x if i]
 
-result = (n -len(nodes)) + len(subtrees) - 1
+result = (n -len(nodes)) + len(x) - 1
 print(result)

@@ -15,7 +15,6 @@ def independent_alleles(k, n):
         p += combination(count, i) * pow(0.25, i) * pow(0.75, count - i)
     return p
 
-if __name__ == "__main__":
     with open("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_lia.txt", "r") as f:
         k, n = [int(i) for i in f.readline().strip().split(" ")]
     print(independent_alleles(k,n))
