@@ -11,7 +11,7 @@ def read_fasta(file):
 			seq[name] += line.replace('\n', '')
 	fp.close()
 	return seq
-# print read_fasta("rosalind_orf.txt")
+
 
 def coding(s):
 	if s == 'TTT' or s == 'TTC':
@@ -57,11 +57,11 @@ def coding(s):
 	elif s == 'TAA' or s == 'TAG' or s == 'TGA':
 		return '~'
 
-# print coding('GGG')
+
 def switch(s):
-	# str(s)
+
 	s = s[::-1]
-	# print s
+
 	switch_s = ''
 	for i in range(len(s)):
 		if s[i] == 'A':
@@ -73,8 +73,7 @@ def switch(s):
 		elif s[i] == 'C':
 			switch_s += 'G'
 	return switch_s
-# print switch('TATCG')
-# other seq
+
 
 def result(sequence):
 	s1 = ''
@@ -83,21 +82,18 @@ def result(sequence):
 	result_list = []
 	for i in range(0, len(sequence)-2, 3):
 		s1 = s1 + str(coding(sequence[i:i+3]))
-	# print s1
 	for i in range(len(s1)):
 		if s1[i] == 'M' and s1.find('~',i) != -1:
 			result_list.append(s1[i:s1.find('~',i)])
 
 	for i in range(1, len(sequence)-2, 3):
 		s2 = s2 + str(coding(sequence[i:i+3]))
-	# print s2
 	for i in range(len(s2)):
 		if s2[i] == 'M' and s2.find('~',i) != -1:
 			result_list.append(s2[i:s2.find('~',i)])
 
 	for i in range(2, len(sequence)-2, 3):
 		s3 = s3 + str(coding(sequence[i:i+3]))
-	# print s3
 	for i in range(len(s3)):
 		if s3[i] == 'M' and s3.find('~',i) != -1:
 			result_list.append(s3[i:s3.find('~',i)])
@@ -108,16 +104,12 @@ def main(file):
 	sequence = ''
 	for i in seq.keys():
 		sequence = seq[i]
-	# print len(sequence)
 	other_sequence = switch(sequence)
-	# print other_sequence
 	list1 = result(sequence)
 	list2 = result(other_sequence)
 	listall = list1 + list2
 	list3 = []
-	# print listall
 	listall = list(set(listall))
-	# print listall
 	for i in listall:
 		print(i)
 main("C:/Users/abdel/PycharmProjects/pythonProject1/rosalind_orf.txt")
